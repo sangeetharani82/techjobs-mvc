@@ -17,7 +17,7 @@
         <table>
             <tr th:each="job, idx : ${jobs}" th:class="${idx.odd} ? 'odd'">
             <tr th:each ="i : ${job}">
-                <th th:text="${i.key}"></th>
+                <th th:text="${#strings.capitalizeWords(i.key)}"></th>
                 <td th:text="${i.value}"></td>
             </tr>
             </tr>
