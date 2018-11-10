@@ -13,7 +13,7 @@ import java.util.HashMap;
  * Created by LaunchCode
  */
 @Controller
-@RequestMapping("search")
+@RequestMapping(value = "search")
 public class SearchController {
 
     @RequestMapping(value = "")
@@ -23,5 +23,18 @@ public class SearchController {
     }
 
     // TODO #1 - Create handler to process search request and display results
-
+    @RequestMapping(value = "results")
+    public String searchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm) {
+        if (searchType.equals("all")) {
+            ArrayList<HashMap<String, String>> items = JobData.findByValue(searchTerm);
+            model.addAttribute("subtitle", items.size() + " Result(s)");
+            model.addAttribute("items", items);
+            return "search";
+        } else {
+            ArrayList<HashMap<String, String>> items = JobData.findByColumnAndValue(searchType, searchTerm);
+            model.addAttribute("subtitle", items.size() + " Result(s)");
+            model.addAttribute("items", items);
+            return "search";
+        }
+    }
 }
