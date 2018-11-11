@@ -14,9 +14,9 @@
     <!-- TODO #3 - Use the same list display from search.html -->
     <div th:if="${jobs} and ${jobs.size()}">
 
-        <table>
-            <tr th:each="job, idx : ${jobs}" th:class="${idx.odd} ? 'odd'">
-            <tr th:each ="i : ${job}">
+        <table class="job-listing">
+            <tr th:each="job : ${jobs}" >
+            <tr th:each ="i, idx : ${job}" th:class="${idx.odd} ? 'odd'">
                 <th th:text="${#strings.capitalizeWords(i.key)}"></th>
                 <td th:text="${i.value}"></td>
             </tr>
@@ -24,6 +24,7 @@
         </table>
 
     </div>
+
 
 </div>
 

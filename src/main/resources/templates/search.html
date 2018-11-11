@@ -23,9 +23,7 @@
                         th:checked="${column.key == 'all'}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
-
         </p>
-
         <p>
             <label for="searchTerm">Keyword:</label>
             <input type="text" name="searchTerm" id="searchTerm" />
@@ -40,10 +38,10 @@
     <h2 th:text="${#strings.capitalizeWords(subtitle)}"></h2>
     <div th:if="${items} and ${items.size()}">
 
-        <table>
-            <tr th:each="item, idx : ${items}" th:class="${idx.odd} ? 'odd'">
-                <tr th:each ="i : ${item}">
-                    <th th:text="${#strings.capitalizeWords(i.key)}"></th>
+        <table class="job-listing">
+            <tr th:each="item : ${items}">
+                <tr th:each ="i, idx : ${item}" th:class="${idx.odd} ? 'odd'">
+                    <th th:text="${#strings.capitalizeWords(i.key)}" ></th>
                     <td th:text="${i.value}"></td>
                 </tr>
             </tr>

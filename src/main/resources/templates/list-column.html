@@ -9,7 +9,7 @@
 <div class="container body-content">
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
-
+    <h2 th:text="${#strings.capitalizeWords(subtitle)}"></h2>
     <div th:if="${items} and ${items.size()}">
 
         <table>
